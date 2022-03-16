@@ -1,0 +1,102 @@
+date-table-scrollable,
+.dx-scheduler-work-space[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 146px;
+  margin-bottom: -146px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 113px;
+  margin-bottom: -113px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 143px;
+  margin-bottom: -143px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 173px;
+  margin-bottom: -173px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 203px;
+  margin-bottom: -203px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 75px;
+  margin-bottom: -75px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 105px;
+  margin-bottom: -105px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 135px;
+  margin-bottom: -135px;
+}
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 165px;
+  margin-bottom: -165px;
+}
+.dx-scheduler-work-space-day .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.dx-scheduler-work-space-day[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 30px;
+  margin-bottom: -30px;
+}
+.dx-scheduler-work-space-day[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 60px;
+  margin-bottom: -60px;
+}
+.dx-scheduler-work-space-day[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 90px;
+  margin-bottom: -90px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 57px;
+  margin-bottom: -57px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 87px;
+  margin-bottom: -87px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 117px;
+  margin-bottom: -117px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 147px;
+  margin-bottom: -147px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day-collapsed .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day-collapsed .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 19px;
+  margin-bottom: -19px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='1'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 49px;
+  margin-bottom: -49px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='2'] .dx-scrollable.dx-scheduler-sidebar-scrollable {
+  padding-bottom: 79px;
+  margin-bottom: -79px;
+}
+.dx-scheduler-work-space-day.dx-scheduler-work-space-all-day-collapsed[dx-group-row-count='3'] .dx-scrollable.dx-scheduler-date-table-scrollable,
+.dx-scheduler-work-space-day.dx-scheduler-

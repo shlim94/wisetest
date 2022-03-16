@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="vb" Debug="true" Service="DownloadReportService" CodeBehind="DownloadReportService.svc.vb" %>

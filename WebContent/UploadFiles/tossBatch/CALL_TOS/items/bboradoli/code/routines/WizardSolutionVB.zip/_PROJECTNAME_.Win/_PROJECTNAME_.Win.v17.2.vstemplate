@@ -1,0 +1,69 @@
+6,114,0) 0,rgba(70,86,114,.8) 60%);
+}
+.dx-dateview-item-selected-frame:after {
+  top: 40px;
+  border-top: 1px solid #596980;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(70,86,114,0)),color-stop(60%,rgba(70,86,114,.8)));
+  background-image: linear-gradient(180deg,rgba(70,86,114,0) 0,rgba(70,86,114,.8) 60%);
+}
+.dx-dateview-compact .dx-dateview-rollers,
+.dx-device-phone .dx-dateview-rollers,
+.dx-device-tablet .dx-dateview-rollers {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+.dx-dateview-compact .dx-dateviewroller-month,
+.dx-device-phone .dx-dateviewroller-month,
+.dx-device-tablet .dx-dateviewroller-month {
+  min-width: 4em;
+}
+.dx-dateview-compact .dx-dateview-item,
+.dx-device-phone .dx-dateview-item,
+.dx-device-tablet .dx-dateview-item {
+  font-size: 1.1em;
+}
+.dx-dateview-compact .dx-dateview-item-selected,
+.dx-device-phone .dx-dateview-item-selected,
+.dx-device-tablet .dx-dateview-item-selected {
+  font-size: 1.4em;
+}
+.dx-calendar {
+  width: 282px;
+  min-width: 282px;
+  height: 268.6px;
+  min-height: 268.6px;
+  background-color: #465672;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  border: 1px solid transparent;
+}
+.dx-calendar.dx-calendar-with-footer {
+  height: 323.6px;
+  min-height: 293.6px;
+}
+.dx-calendar.dx-calendar-with-footer .dx-calendar-body {
+  bottom: 55px;
+}
+.dx-calendar.dx-calendar-with-footer .dx-calendar-footer {
+  text-align: center;
+  height: 45px;
+  width: 100%;
+}
+.dx-calendar.dx-calendar-with-footer .dx-calendar-footer .dx-button {
+  background: 0 0;
+}
+.dx-calendar.dx-calendar-with-footer .dx-calendar-footer .dx-button.dx-state-active {
+  background-color: #6b80a4;
+}
+.dx-calendar-navigator {
+  line-height: 1.6;
+  height: 36px;
+  display: table

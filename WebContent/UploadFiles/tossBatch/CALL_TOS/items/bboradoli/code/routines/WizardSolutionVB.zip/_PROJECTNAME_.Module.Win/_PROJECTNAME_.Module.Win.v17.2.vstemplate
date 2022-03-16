@@ -1,0 +1,82 @@
+grid .dx-column-header,
+.dx-pivotgrid .dx-data-header,
+.dx-pivotgrid .dx-total {
+  background-color: #42516c;
+}
+.dx-pivotgrid .dx-grandtotal {
+  background-color: rgba(0,0,0,.12);
+}
+.dx-pivotgrid .dx-pivotgrid-border .dx-area-description-cell,
+.dx-pivotgrid .dx-pivotgrid-border .dx-area-row-cell,
+.dx-pivotgrid .dx-pivotgrid-border .dx-data-header,
+.dx-pivotgrid .dx-pivotgrid-border .dx-filter-header {
+  border-left: 1px solid #596980;
+}
+.dx-pivotgrid .dx-pivotgrid-border .dx-area-column-cell,
+.dx-pivotgrid .dx-pivotgrid-border .dx-area-data-cell,
+.dx-pivotgrid .dx-pivotgrid-border .dx-column-header,
+.dx-pivotgrid .dx-pivotgrid-border .dx-filter-header {
+  border-right: 1px solid #596980;
+}
+.dx-pivotgrid .dx-pivotgrid-border .dx-filter-header {
+  border-top: 1px solid #596980;
+}
+.dx-pivotgrid .dx-pivotgrid-border .dx-filter-header td {
+  display: inline-block;
+}
+.dx-pivotgrid .dx-pivotgrid-border .dx-area-data-cell,
+.dx-pivotgrid .dx-pivotgrid-border .dx-area-row-cell {
+  border-bottom: 1px solid #596980;
+}
+.dx-pivotgrid .dx-icon-sorted {
+  display: inline-block;
+  margin-left: 5px;
+  width: 14px;
+}
+.dx-pivotgrid .dx-popup-content {
+  padding: 6px;
+}
+.dx-pivotgrid .dx-popup-content .dx-pivotgrid-fields-area-head td {
+  padding: 0 2px;
+}
+.dx-pivotgridfieldchooser .dx-area-fields {
+  overflow: hidden;
+}
+.dx-pivotgridfieldchooser .dx-treeview-item .dx-icon {
+  margin-bottom: 1px;
+  width: 16px;
+  height: 16px;
+  background-position: 0 0;
+  background-size: 16px 16px;
+  padding: 0;
+  font-size: 16px;
+  text-align: center;
+  line-height: 16px;
+}
+.dx-pivotgridfieldchooser .dx-treeview-search {
+  margin: 5px;
+}
+.dx-pivotgridfieldchooser .dx-area-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+.dx-pivotgridfieldchooser .dx-area {
+  padding: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.dx-pivotgridfieldchooser .dx-area>.dx-scrollable,
+.dx-pivotgridfieldchooser .dx-area>.dx-scrollable>.dx

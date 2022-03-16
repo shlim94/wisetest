@@ -1,0 +1,366 @@
+/** DataUtility */
+WISE.libs.Dashboard.item.WpConnectionUtility = {
+	getPopupWpConntion: function(_self){
+		var self = _self;
+		
+		console.log(userJsonObject.wpModel);
+		var p = $('#editPopup').dxPopup('instance');
+		p.option({
+			title: '변동 측정값',
+			width: 1200,
+			onContentReady: function() {
+				gDashboard.fontManager.setFontConfigForOption('editPopup');
+			},
+			contentTemplate: function(contentElement) {
+				// initialize title input box
+
+				var deltahtml = "<div class=\"modal-body\" style='height:87%'>\r\n" +
+				"                        <div class=\"row\" style='height:100%'>\r\n" +
+				"                            <div class=\"column\" style='width:60%'>\r\n" +
+				"                                <div class=\"modal-article\" style=\"margin-top:0px;\">\r\n" +
+				"                                   <div class=\"modal-tit\">\r\n" +
+				"                                   	<span>알고리즘 목록</span>\r\n" +
+				'										<div id="'+self.itemid+'_saveField" style="float:right">'+
+				'											<a><img src="' + WISE.Constants.context + '/resources/main/images/ico_zoom.png" style="height:25px; width:25px;"/></a>'+
+				"										</div>"+
+				"                                   </div>\r\n" +
+				"									<div id=\"" + self.itemid + "_deltaValueList\" />\r\n" +
+				"                                </div>\r\n" +
+				"                            </div>\r\n" +
+				"							 <div class=\"column\" style='width:60%'>\r\n" +
+				"                                <div class=\"modal-article\" style=\"margin-top:0px;\">\r\n" +
+				"                                   <div class=\"modal-tit\">\r\n" +
+				"                                   <span>파라메터 정보</span>\r\n" +
+				"                                   </div>\r\n" +
+				"									<div id=\""+self.itemid+"_deltaValueInfo\"/>\r\n" +
+				"									<div style='text-align: right;font-size: 0.75em;'><br>변동 측정값을 적용하면 차트는 그리드와 연결되어,<br>그리드 속성의 '차트 표시 여부' 기능이 작동하지 않습니다.</div>\r\n" +
+				"                                </div>\r\n" +
+//				"								<div class=\"modal-footer\" style='padding-top:15px;padding-bottom:5px;'>"+
+//				"									<div class='row center'>"+
+//				"										<a id=\""+self.itemid+"_deltaValueSave\" class=\"btn positive ok-hide\" href='#'>저장</a>\r\n" +
+//				"										<a id=\""+self.itemid+"_deltaValueDelete\" class=\"btn neutral close\" href='#'>삭제</a>\r\n" +
+//				"									</div>"+
+//				"								</div>"+
+				"                            </div>\r\n" +
+				"                        </div>\r\n" + //row 끝
+				"                    </div>\r\n" + //modal-body 끝
+				"                    <div class=\"modal-footer\" style=\"padding-top:15px;\">\r\n" +
+				"                        <div class=\"row center\">\r\n" +
+				"                            <a id='"+self.itemid+"_deltaValueOK' class=\"btn positive ok-hide\" href='#'>확인</a>\r\n" +
+				"                            <a id='"+self.itemid+"_deltaValueCancel' class='btn neutral close' href='#'>취소</a>\r\n" +
+				"                        </div>\r\n" +
+				"                    </div>\r\n" +
+				"                </div>";
+
+				contentElement.append(deltahtml);
+				var fieldItems = new Array();
+				var wpModelParamsField = new Array();
+				var wpFormData = {
+						'ARG_ID':'',
+						'ARG_NM':'',
+						'ARG_TYPE':'',
+				};
+				
+				$.each(self.DI.Measure,function(_i,_fields){
+					fieldItems.push(_fields.DataMember);
+				});
+
+
+				$('#' + self.itemid + '_deltaValueList').dxDataGrid({
+					columns:[
+						{
+							caption: "알고리즘 ID",
+							dataField: "ARG_ID",
+							visible:false
+						},
+						{
+							caption: "알고리즘 명",
+							dataField: "ARG_NM"
+						},
+						{
+							caption: "알고리즘 타입",
+							dataField : "ARG_TYPE"
+						},
+						{
+							caption: "알고리즘 설명",
+							dataField : "ARG_DESC"
+
+						},
+					],
+					columnAutoWidth: true,
+					dataSource:userJsonObject.wpModel,
+//					selection:{
+//						mode:'single',
+//					},
+					editing: {
+						mode: 'row',
+						allowDeleting: true,
+						useIcons: true,
+						texts: {
+							confirmDeleteMessage: ''
+						}
+					},
+					onSelectionChanged: function (selectedItems) {
+						if(selectedItems.selectedRowsData.length !=0){
+//							var indexId = selectedItems.selectedRowsData[0]['ID'];
+//							$.each(self.deltaItems,function(_i,_deltaItem){
+//								if()
+//							})
+							wpFormData['ARG_ID'] = selectedItems.selectedRowsData[0]['ARG_ID'];
+							wpFormData['ARG_NM'] = selectedItems.selectedRowsData[0]['ARG_NM'];
+							wpFormData['ARG_TYPE'] = selectedItems.selectedRowsData[0]['ARG_TYPE'];
+							
+							wpModelParamsField = [
+								{
+									dataField:"ARG_ID",
+									visible:false,
+								},
+								{
+						            dataField: "ARG_NM",
+						            editorOptions: {
+						                disabled: true
+						            },
+						            label:{
+						        		text:'알고리즘 명'
+						        	}
+						        },
+						        {
+						            dataField: "ARG_TYPE",
+						            editorOptions: {
+						                disabled: true
+						            },
+						            label:{
+						        		text:'알고리즘 타입 명'
+						        	}
+						        }
+						    ];
+							
+							for(let sParamInfo of selectedItems.selectedRowsData[0]['ARG_PARAM']){
+								
+								let sFieldOption = {};
+								wpFormData[sParamInfo['PARAM_NM']] = sParamInfo['PARAM_VALUE']['VALUE'];
+								
+								if(sParamInfo['PARAM_VALUE']['TYPE'] == "STR"){
+									sFieldOption = {
+										editorType: "dxSelectBox",
+										editorOptions: {
+										     items: sParamInfo['PARAM_VALUE']['OPTION'],
+										     value: sParamInfo['PARAM_VALUE']['VALUE']
+										},
+									}
+								}
+								else{
+									sFieldOption = {
+									}
+								}
+								
+								wpModelParamsField.push({
+									dataField: sParamInfo['PARAM_NM'],
+						            label:{
+						        		text:sParamInfo['PARAM_NM']
+						        	},
+									sFieldOption
+								});
+							}
+							/*$('#'+self.itemid+'_deltaValueInfo').dxForm('updateData',selectedItems.selectedRowsData[0]);*/
+							$('#'+self.itemid+'_deltaValueInfo').dxForm({
+								formData:wpFormData,
+								items:wpModelParamsField
+							});
+//							var form = $('#'+self.itemid+'_deltaValueInfo').dxForm('instance');
+//							form.option("formData", self.deltaItems[indexId]);
+						}else{
+							$('#' + self.itemid + '_deltaValueInfo').dxForm('resetValues');
+						}
+					},
+					onRowClick: function(e) {
+						if (e.isSelected) {
+							e.component.deselectRows([e.key]);
+						} else {
+							e.component.selectRows([e.key]);
+						}
+					}
+				});
+				
+				$('#'+self.itemid+'_saveField').on('click',function(){
+					var formData = $('#'+self.itemid+'_deltaValueInfo').dxForm('instance').option("formData");
+					formData = JSON.parse(JSON.stringify(formData));
+					var itemLength = self.deltaItemlength;
+					if(formData.BASE_FLD_NM != "" && formData.CAPTION != "" &&  formData.DELTA_VALUE_TYPE != ""){
+						if($.isNumeric(formData.CAPTION) == true){
+							WISE.alert("변동 측정값의 항목은 숫자로만 작성하여 적용할 수 없습니다!");
+							return false;
+						}
+						if(formData.DELTA_VALUE_TYPE == "Rank Row Smallest To Largest" || formData.DELTA_VALUE_TYPE == 'Rank Row Largest To Smallest'){
+							if(self.Pivot.Columns.Column.length == 0){
+								WISE.alert("행 기준 순위는 비교 대상 열이 없으면 측정할 수 없습니다!");
+								return false;
+							}
+						}
+						else if(formData.DELTA_VALUE_TYPE == "Rank Column Smallest To Largest" || formData.DELTA_VALUE_TYPE == "Rank Column Largest To Smallest" ){
+							if(self.Pivot.Rows.Row.length == 0){
+								WISE.alert("열 기준 순위는 비교 대상 행이 없으면 측정할 수 없습니다!");
+								return false;
+							}
+						}
+						else if(formData.DELTA_VALUE_TYPE == 'Absolute Variation'){
+							if(self.Pivot.Columns.Column.length == 0){
+								WISE.alert("열에 분석할 대상이 없는경우 변화량을 책정할 수 없습니다!");
+								return false;
+							}
+						}
+						else if( formData.DELTA_VALUE_TYPE =='Percent Variation'){
+							if(self.Pivot.Columns.Column.length == 0){
+								WISE.alert("열에 분석할 대상이 없는경우 변화 비율을 책정할 수 없습니다!");
+								return false;
+							}
+						}
+						if(formData.FLD_NM  == ""){
+							formData.ID = itemLength+1;
+							formData.FLD_NM = 'DELTA_FIELD_'+(itemLength + 1);
+							formData.BASE_UNI_NM = formData.BASE_FLD_NM;
+							var formDataNoLink = JSON.parse(JSON.stringify(formData));
+							$.merge(self.deltaItems,[formDataNoLink]);
+							$('#' + self.itemid + '_deltaValueList').dxDataGrid('clearSelection');
+							$('#' + self.itemid + '_deltaValueList').dxDataGrid('refresh');
+							$('#' + self.itemid + '_deltaValueInfo').dxForm('resetValues');
+							self.deltaItemlength++;
+						}else{
+							$.each(self.deltaItems,function(_i,_deltaItem){
+								if(formData.FLD_NM == _deltaItem.FLD_NM){
+									_deltaItem.CAPTION = formData.CAPTION;
+									_deltaItem.BASE_FLD_NM = formData.BASE_FLD_NM;
+									_deltaItem.BASE_UNI_NM = formData.BASE_FLD_NM;
+									_deltaItem.DELTA_VALUE_TYPE = formData.DELTA_VALUE_TYPE;
+									return false;
+								}
+							})
+
+							$('#' + self.itemid + '_deltaValueList').dxDataGrid('clearSelection');
+							$('#' + self.itemid + '_deltaValueList').dxDataGrid('refresh');
+							$('#' + self.itemid + '_deltaValueInfo').dxForm('resetValues');
+						}
+					}
+					else{
+						WISE.alert("* 표시된 항목은 필수 사항입니다.");
+					}
+				});
+				$('#'+self.itemid+'_deltaValueOK').dxButton({
+					text:"확인",
+					onClick:function(){
+						var formData = $('#'+self.itemid+'_deltaValueInfo').dxForm('instance').option("formData");
+						formData = JSON.parse(JSON.stringify(formData));
+						var itemLength = self.deltaItemlength;
+						if(formData.BASE_FLD_NM != null){
+							if(formData.BASE_FLD_NM != "" && formData.CAPTION != "" &&  formData.DELTA_VALUE_TYPE != ""){
+								if($.isNumeric(formData.CAPTION) == true){
+									WISE.alert("변동 측정값의 항목은 숫자로만 작성하여 적용할 수 없습니다!");
+									return false;
+								}
+								if(formData.DELTA_VALUE_TYPE == "Rank Row Smallest To Largest" || formData.DELTA_VALUE_TYPE == 'Rank Row Largest To Smallest'){
+									if(self.Pivot.Columns.Column.length == 0){
+										WISE.alert("행 기준 순위는 비교 대상 열이 없으면 측정할 수 없습니다!");
+										return false;
+									}
+								}
+								else if(formData.DELTA_VALUE_TYPE == "Rank Column Smallest To Largest" || formData.DELTA_VALUE_TYPE == "Rank Column Largest To Smallest" ){
+									if(self.Pivot.Rows.Row.length == 0){
+										WISE.alert("열 기준 순위는 비교 대상 행이 없으면 측정할 수 없습니다!");
+										return false;
+									}
+								}
+								else if(formData.DELTA_VALUE_TYPE == 'Absolute Variation'){
+									if(self.Pivot.Columns.Column.length == 0){
+										WISE.alert("열에 분석할 대상이 없는경우 변화량을 책정할 수 없습니다!");
+										return false;
+									}
+								}
+								else if( formData.DELTA_VALUE_TYPE =='Percent Variation'){
+									if(self.Pivot.Columns.Column.length == 0){
+										WISE.alert("열에 분석할 대상이 없는경우 변화 비율을 책정할 수 없습니다!");
+										return false;
+									}
+								}
+								if(formData.FLD_NM  == ""){
+									formData.ID = itemLength+1;
+									formData.FLD_NM = 'DELTA_FIELD_'+itemLength;
+									formData.BASE_UNI_NM = formData.BASE_FLD_NM;
+									var formDataNoLink = JSON.parse(JSON.stringify(formData));
+									$.merge(self.deltaItems,[formDataNoLink]);
+									$('#' + self.itemid + '_deltaValueList').dxDataGrid('clearSelection');
+									$('#' + self.itemid + '_deltaValueList').dxDataGrid('refresh');
+									$('#' + self.itemid + '_deltaValueInfo').dxForm('resetValues');
+									self.deltaItemlength++;
+								}else{
+									$.each(self.deltaItems,function(_i,_deltaItem){
+										if(formData.FLD_NM == _deltaItem.FLD_NM){
+											_deltaItem.CAPTION = formData.CAPTION;
+											_deltaItem.BASE_FLD_NM = formData.BASE_FLD_NM;
+											_deltaItem.BASE_UNI_NM = formData.BASE_FLD_NM;
+											_deltaItem.DELTA_VALUE_TYPE = formData.DELTA_VALUE_TYPE;
+											return false;
+										}
+									})
+
+									$('#' + self.itemid + '_deltaValueList').dxDataGrid('clearSelection');
+									$('#' + self.itemid + '_deltaValueList').dxDataGrid('refresh');
+									$('#' + self.itemid + '_deltaValueInfo').dxForm('resetValues');
+								}
+								$('#' + self.itemid + '_deltaValueList').dxDataGrid('refresh');
+								//2020.02.17 mksong 옵션 사용한 바인드일 때 프로그레스 하이드 되도록 수정 dogfoot
+								self.functionBinddata = true;
+								self.bindData(self.globalData,true);
+								p.hide();
+
+							}
+							else{
+								if(self.deltaItemlength==0){
+									var isAnything = false;
+									$.each(_.keys(formData), function(_index,_key){
+										if(formData[_key] != ""){
+											isAnything = true;
+										}
+									});
+									if(isAnything){
+										WISE.alert("* 표시된 항목은 필수 사항입니다.");
+									}else{
+										p.hide();
+									}
+								}
+								else{
+//									self.bindData(self.globalData,true);
+									/* DOGFOOT ktkang 주제영역 데이터 변동측정값 기능 수정  20191212 */
+									if(WISE.Context.isCubeReport) {
+										gDashboard.queryByGeneratingSql = true;
+									}
+
+									gDashboard.query();
+									p.hide();
+								}
+							}
+						}else{
+//							self.bindData(self.globalData,true);
+							if(WISE.Context.isCubeReport) {
+								gDashboard.queryByGeneratingSql = true;
+							}
+
+							gDashboard.query();
+							p.hide();
+						}
+					}
+				});
+				$('#'+self.itemid+'_deltaValueCancel').dxButton({
+					text:"취소",
+					onClick:function(){
+						p.hide();
+					}
+				});
+			}
+		});
+		
+		return {
+			popup : p,
+			self : self
+		};
+	}
+}

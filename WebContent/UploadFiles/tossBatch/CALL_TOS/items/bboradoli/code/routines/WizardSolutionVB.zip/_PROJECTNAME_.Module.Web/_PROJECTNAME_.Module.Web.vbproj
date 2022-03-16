@@ -1,0 +1,128 @@
+/**
+ * Manage and calcuate custom field inputs.
+ */
+WISE.libs.Dashboard.CustomFieldManager = function() {
+    /*
+     * Variables
+     */
+	var self = this;
+	this.editLayout;
+    this.calcLayout;
+    /* dogfoot WHATIF 분석 매개변수 생성 레이아웃 shlim 20201022 */
+    this.paramLayout
+    this.functionList;
+	this.dataSource;
+	this.dataSourceName;
+    this.customFieldNumber;
+	this.fieldInfo;
+	this.originalFieldInfo;
+	/* DOGFOOT hsshim 1231
+	 * variable를 CustomFieldManager 클레스 안으로 이동
+	 */
+	var editTemplate = 	'<div class="modal-body" style="height:87%">' + 
+							'<div class="row" style="height:100%">' + 
+								'<div class="column" style="width:60%">' + 
+									'<div class="modal-article" style="margin-top:0px;">' + 
+										'<div class="modal-tit">' + 
+											'<span style="font-size:1.5rem;">사용자 정의 데이터</span>' + 
+											'<div style="float:right;">' +
+												'<a id="saveField"><img src="' + WISE.Constants.context + '/resources/main/images/ico_zoom.png" style="height:30px; width:30px;"/></a>' +
+											'</div>' +
+										'</div>' + 
+										'<div id="customFieldList" />' + 
+									'</div>' +
+								'</div>' + 
+								'<div class="column" style="width:40%">' + 
+									'<div class="modal-article" style="margin-top:0px;">' + 
+										'<div class="modal-tit">' + 
+											'<span style="font-size:1.5rem;">사용자 정의 데이터 정보</span>' + 
+										'</div>' +
+										'<div class="tbl data-form">' +
+											'<table>' +
+												'<colgroup <col="" style="width: 120px;">' +
+													'<col style="width: auto">' +
+												'</colgroup>' +
+												'<tbody>' +
+												'<tr>' +
+														'<th style="vertical-align: middle; padding: 0; font-size: 1.25rem;">필드 이름</th>' +
+														'<td class="ipt">' +
+															'<input id="fieldName" type="text" class="wise-text-input" style="font-size:1.25rem; height: 42px;">' +
+														'</td>' +
+													'</tr>' +
+													'<tr>' +
+														'<th style="vertical-align: middle; padding: 0; font-size: 1.25rem;">계산식</th>' +
+														'<td class="ipt">' +
+															'<div class="relative-item">' +
+															/* DOGFOOT ktkang 사용자 정의 데이터 오류 수정  20200730 */
+																'<input id="fieldCalc" type="text" class="wise-text-input search" readonly style="font-size:1.25rem; height: 42px; width: 175px;">' +
+																'<a id="toCalcView" style="background-image: url(../resources/main/images/ico_sigma.png); background-size: cover; background-position: center; width: 30px; height: 30px;"></a>' +
+															'</div>' +
+														'</td>' +
+													'</tr>' +
+												'</tbody>' +
+											'</table>' +
+										'</div>' + 
+									'</div>' +
+								'</div>' + 
+							'</div>' +
+						'</div>' +
+						'<div class="modal-footer" style="padding-top:15px;">' + 
+							'<div class="row center">' + 
+								'<a class="btn positive edit-ok-hide">확인</a>' + 
+								'<a class="btn neutral edit-close">취소</a>' +
+							'</div>' + 
+						'</div>';
+
+	var calcTemplate =  '<div class="math-edit">' +
+							/* dogfoot WHATIF 분석 매개변수 생성 레이아웃 shlim 20201022 */
+							'<div id="calcParam_area" class="param_area modal-tit" style="height: 40px;">' + 
+	                            '<div class="right-item-calc">' +
+	                            	'<a id="createCalcParamBtn" class="btn crud positive">매개변수 생성</a>' +
+	                            '</div>' +
+	                        '</div>' +
+							'<textarea id="calcTextArea" class="wise-text-input" style="width:100%; height:160px;"></textarea>' +
+							'<div class="filter-bar-sub">' +
+								'<div class="filter-center">' +
+									'<div class="filter-inline">' +
+										'<ul class="math-gui-list">' +
+											'<li><a class="operator-button" title="add" symbol="+"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_plus.png" alt=""><span>더하기</span></a></li>' +
+											'<li><a class="operator-button" title="subtract" symbol="-"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_minus.png" alt=""><span>빼기</span></a></li>' +
+											'<li><a class="operator-button" title="multiply" symbol="*"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_multiple.png" alt=""><span>곱하기</span></a></li>' +
+											'<li><a class="operator-button" title="divide" symbol="/"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_div.png" alt=""><span>나누기</span></a></li>' +
+											'<li><a class="operator-button" title="modulo" symbol="%"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_percent.png" alt=""><span>퍼센트</span></a></li>' +
+										'</ul>' +
+										// '<ul class="math-gui-list">' +
+										// 	'<li><a class="operator-button"title="more operators..."><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_etc1.png" alt=""><span>?</span></a></li>' +
+										// '</ul>' +
+										'<ul class="math-gui-list">' +
+											'<li><a class="operator-button" title="equals"  symbol="=="><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_same.png" alt=""><span>?</span></a></li>' +
+											'<li><a class="operator-button" title="not equals" symbol="!="><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_nosame.png" alt=""><span>?</span></a></li>' +
+											'<li><a class="operator-button" title="less than" symbol="<"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_right.png" alt=""><span>?</span></a></li>' +
+											'<li><a class="operator-button" title="less than or equal to" symbol="<="><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_rightfull.png" alt=""><span>?</span></a></li>' +
+											'<li><a class="operator-button" title="greater than or equal to" symbol=">="><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_leftfull.png" alt=""><span>?</span></a></li>' +
+											'<li><a class="operator-button" title="greater than" symbol=">"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_left.png" alt=""><span>?</span></a></li>' +
+										'</ul>' +
+										'<ul class="math-gui-list ctl">' +
+											'<li><a class="operator-button" title="A and B" symbol="and"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_etc2.png" alt=""><span>?</span></a></li>' +
+											'<li><a class="operator-button" title="A or B" symbol="or"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_etc3.png" alt=""><span>?</span></a></li>' +
+											'<li><a class="operator-button" title="not B" symbol="not"><img src="' + WISE.Constants.context + '/resources/main/images/ico_math_etc4.png" alt=""><span>?</span></a></li>' +
+										'</ul>' +
+									'</div>' +
+								'</div>' +
+							'</div>' +
+							'<div class="layout-row">' +
+								'<div class="layout-col" style="width: 33.3333%; border:1px solid #e7e7e7;">' +
+									'<div class="select-list">' +
+										'<ul>' +
+											//2020.04.06 MKSONG mouse-icon 수정 DOGFOOT
+											'<li><a class="select-type" href="#">열</a></li>' +
+											/* dogfoot WHATIF 분석 매개변수 생성 레이아웃 shlim 20201022 */
+											'<li><a class="select-type" href="#">매개변수</a></li>' +
+											'<li><a class="select-type" href="#">상수</a></li>' +
+											'<li><a class="select-type" href="#">연산자</a></li>' +
+											'<li><a class="select-type" href="#">함수</a></li>' +
+										'</ul>' +
+									'</div>' +
+								'</div>' +
+								'<div class="layout-col" style="width: 33.3333%; border:1px solid #e7e7e7;">' +
+			

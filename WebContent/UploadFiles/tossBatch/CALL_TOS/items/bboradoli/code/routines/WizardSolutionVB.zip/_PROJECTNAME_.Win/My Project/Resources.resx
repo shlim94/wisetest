@@ -1,0 +1,135 @@
+      <EventProviderId Value="EventProvider_Microsoft-Windows-WinINet"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-Diagnostics-LoggingChannel"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-DNS-Client"/>
+            <EventProviderId Value="EventProvider_DotNetProvider"/>
+            <EventProviderId Value="EventProvider_DWMCoreWin7"/>
+            <EventProviderId Value="EventProvider_DWMCoreWin8"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-DirectComposition"/>
+            <EventProviderId Value="EventProvider_DWMWin32kWin8">
+              <Keywords Operation="Add">
+                <Keyword Value="0x42e3000"/>
+              </Keywords>
+            </EventProviderId>
+            <EventProviderId Value="EventProvider_DX_ForGPUView"/>
+            <EventProviderId Value="Microsoft-Windows-DxgKrnl_stacks"/>
+            <EventProviderId Value="Microsoft-Windows-DxgKrnl_light"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile
+        Base="XAMLAppResponsiveness.Light.File"
+        Description="@WindowsPerformanceRecorderControl.dll,-5021"
+        DetailLevel="Verbose"
+        Id="XAMLAppResponsiveness.Verbose.File"
+        LoggingMode="File"
+        Name="XAMLAppResponsiveness"
+        >
+      <Collectors Operation="Add">
+        <EventCollectorId Value="EventCollector_WPREventCollectorInFileLarge">
+          <EventProviders>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-DirectComposition">
+              <Keywords Operation="Add">
+                <Keyword Value="0x44"/>
+              </Keywords>
+            </EventProviderId>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile
+        Base="XAMLAppResponsiveness.Light.File"
+        Description="@WindowsPerformanceRecorderControl.dll,-5021"
+        DetailLevel="Light"
+        Id="XAMLAppResponsiveness.Light.Memory"
+        LoggingMode="Memory"
+        Name="XAMLAppResponsiveness"
+        >
+      <Collectors Operation="Add">
+        <SystemCollectorId Value="SystemCollector_WPRSystemCollectorInFile">
+          <Buffers
+              PercentageOfTotalMemory="true"
+              Value="3"
+              />
+        </SystemCollectorId>
+        <EventCollectorId Value="EventCollector_WPREventCollectorInFile">
+          <Buffers
+              PercentageOfTotalMemory="true"
+              Value="3"
+              />
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile
+        Base="XAMLAppResponsiveness.Verbose.File"
+        Description="@WindowsPerformanceRecorderControl.dll,-5021"
+        DetailLevel="Verbose"
+        Id="XAMLAppResponsiveness.Verbose.Memory"
+        LoggingMode="Memory"
+        Name="XAMLAppResponsiveness"
+        >
+      <Collectors Operation="Add">
+        <SystemCollectorId Value="SystemCollector_WPRSystemCollectorInFile">
+          <Buffers
+              PercentageOfTotalMemory="true"
+              Value="5"
+              />
+        </SystemCollectorId>
+        <EventCollectorId Value="EventCollector_WPREventCollectorInFile">
+          <Buffers
+              PercentageOfTotalMemory="true"
+              Value="5"
+              />
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile
+        Base="BaseProfile.Light"
+        Description="@WindowsPerformanceRecorderControl.dll,-5022"
+        DetailLevel="Light"
+        Id="HTMLResponsiveness.Light.File"
+        LoggingMode="File"
+        Name="HTMLResponsiveness"
+        >
+      <ProblemCategories Operation="Add">
+        <ProblemCategory Value="@WindowsPerformanceRecorderControl.dll,-6002"/>
+      </ProblemCategories>
+      <Collectors Operation="Add">
+        <SystemCollectorId Value="SystemCollector_WPRSystemCollectorInFileLarge">
+          <SystemProviderId Value="SystemProvider_General"/>
+        </SystemCollectorId>
+        <EventCollectorId Value="EventCollector_WPREventCollectorInFileLarge">
+          <EventProviders>
+            <EventProviderId Value="EventProvider_IE7"/>
+            <EventProviderId Value="EventProvider_IE8"/>
+            <EventProviderId Value="EventProvider_IE">
+              <Keywords Operation="Add">
+                <Keyword Value="0x30809300"/>
+              </Keywords>
+            </EventProviderId>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-WinINet"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-DNS-Client"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-Diagnostics-LoggingChannel"/>
+            <EventProviderId Value="EventProvider_DotNetProvider"/>
+            <EventProviderId Value="EventProvider_Microsoft-JScript">
+              <Keywords Operation="Add">
+                <Keyword Value="0x43"/>
+              </Keywords>
+            </EventProviderId>
+            <EventProviderId Value="EventProvider_DWMCoreWin7"/>
+            <EventProviderId Value="EventProvider_DWMCoreWin8"/>
+            <EventProviderId Value="EventProvider_Microsoft-Windows-DirectComposition"/>
+            <EventProviderId Value="EventProvider_DWMWin32kWin8">
+              <Keywords Operation="Add">
+                <Keyword Value="0x42e3000"/>
+              </Keywords>
+            </EventProviderId>
+            <EventProviderId Value="EventProvider_DX_ForGPUView"/>
+            <EventProviderId Value="Microsoft-Windows-DxgKrnl_stacks"/>
+            <EventProviderId Value="Microsoft-Windows-DxgKrnl_light"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+    <Profile
+        Base="HTM

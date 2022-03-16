@@ -1,0 +1,78 @@
+umberbox.dx-rtl.dx-numberbox-spin-touch-friendly .dx-numberbox-spin-container {
+  border-right: none;
+}
+.dx-rtl .dx-numberbox.dx-numberbox-spin-touch-friendly.dx-show-clear-button .dx-texteditor-input,
+.dx-numberbox.dx-rtl.dx-numberbox-spin-touch-friendly.dx-show-clear-button .dx-texteditor-input {
+  padding-left: 106px;
+}
+.dx-rtl .dx-numberbox.dx-numberbox-spin.dx-show-clear-button .dx-texteditor-input,
+.dx-numberbox.dx-rtl.dx-numberbox-spin.dx-show-clear-button .dx-texteditor-input {
+  padding-left: 66px;
+}
+.dx-rtl .dx-numberbox.dx-numberbox-spin .dx-texteditor-input,
+.dx-numberbox.dx-rtl.dx-numberbox-spin .dx-texteditor-input {
+  padding-right: 9px;
+}
+.dx-datebox-wrapper .dx-popup-title {
+  min-height: 10px;
+  border-bottom: none;
+  background: none;
+}
+.dx-datebox-wrapper .dx-item {
+  border: none;
+}
+.dx-datebox-wrapper .dx-popup-bottom .dx-button {
+  min-width: 85px;
+  width: auto;
+}
+.dx-datebox-wrapper-rollers.dx-datebox-wrapper-time .dx-popup-content {
+  margin: 0 34px;
+}
+.dx-datebox-wrapper-list .dx-overlay-content {
+  border-top: none;
+}
+.dx-device-phone .dx-datebox-wrapper-rollers .dx-popup-content {
+  padding: 10px;
+}
+.dx-datebox-calendar .dx-dropdowneditor-icon {
+  font: 14px/1 DXIcons;
+  width: 32px;
+  height: 100%;
+  font-size: 18px;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 1px;
+}
+.dx-datebox-calendar .dx-dropdowneditor-icon:before {
+  content: "\f026";
+}
+.dx-datebox-calendar .dx-dropdowneditor-icon:before {
+  position: absolute;
+  display: block;
+  width: 18px;
+  top: 50%;
+  margin-top: -9px;
+  left: 50%;
+  margin-left: -9px;
+}
+.dx-datebox-calendar.dx-dropdowneditor-active .dx-texteditor-input {
+  background: #fff;
+}
+.dx-datebox-calendar.dx-rtl.dx-dropdowneditor-active .dx-dropdowneditor-button .dx-dropdowneditor-icon {
+  opacity: 1;
+}
+.dx-datebox-calendar.dx-rtl.dx-editor-underlined {
+  padding-right: 0;
+}
+.dx-datebox-wrapper-calendar .dx-popup-content {
+  padding: 0;
+}
+.dx-datebox-wrapper-calendar .dx-calendar {
+  border: none;
+  margin: 30px;
+}
+.dx-datebox-wrapper-calendar .dx-datebox-container-cell {
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+.dx-datebox-wr

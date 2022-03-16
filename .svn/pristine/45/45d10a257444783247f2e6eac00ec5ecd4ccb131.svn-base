@@ -1,0 +1,71 @@
+# DEMO - intelligence.wise.co.kr
+#jdbc.repository.driverClass=com.microsoft.sqlserver.jdbc.SQLServerDriver
+#jdbc.repository.url=jdbc:sqlserver://169.56.81.19:1433;DatabaseName=WISE.BI.V6.DEMO
+#jdbc.repository.username=sa
+#jdbc.repository.password=dnltpmeta1012!@
+
+
+#jdbc.repository.driverClass=com.microsoft.sqlserver.jdbc.SQLServerDriver
+#jdbc.repository.url=jdbc:sqlserver://169.56.81.19:1433;DatabaseName=WISE.BI.V6.CP
+#jdbc.repository.username=sa
+#jdbc.repository.password=dnltpmeta1012!@
+
+# mssql
+jdbc.repository.driverClass=com.microsoft.sqlserver.jdbc.SQLServerDriver
+jdbc.repository.url=jdbc:sqlserver://169.56.81.19:1433;DatabaseName=WISE.BI.V6.DEV
+jdbc.repository.username=sa
+jdbc.repository.password=dnltpmeta1012!@
+
+
+#jdbc.repository.driverClass=com.microsoft.sqlserver.jdbc.SQLServerDriver
+#jdbc.repository.url=jdbc:sqlserver://192.168.0.15:1433;DatabaseName=WISEMETA
+#jdbc.repository.username=sa
+#jdbc.repository.password=Wise1012
+
+
+# maria
+#jdbc.repository.driverClass=org.mariadb.jdbc.Driver
+#jdbc.repository.url=jdbc:mysql://169.56.72.6:3306/WISEBIV6
+#jdbc.repository.username=wisebiv6
+#jdbc.repository.password=wisebiv61012
+
+#jdbc.repository.driverClass=org.mariadb.jdbc.Driver
+#jdbc.repository.url=jdbc:mysql://169.56.72.6:3306/WISEBIV6
+#jdbc.repository.username=wisebiv6
+#jdbc.repository.password=wisebiv61012
+
+# db2
+#jdbc.repository.driverClass=com.ibm.db2.jcc.DB2Driver
+#jdbc.repository.url=jdbc:db2://169.56.81.30:60000/WISEMETA
+#jdbc.repository.username=wisebir5
+#jdbc.repository.password=wisebir51012
+
+# oracle
+#jdbc.repository.driverClass=oracle.jdbc.driver.OracleDriver
+#jdbc.repository.url=jdbc:oracle:thin:@169.56.81.29:1539:wise
+#jdbc.repository.username=wisebiv6
+#jdbc.repository.password=wisebiv61012
+
+# tibero
+#jdbc.repository.driverClass=com.tmax.tibero.jdbc.TbDriver
+#jdbc.repository.url=jdbc:tibero:thin:@169.56.81.10:11200:wisetb
+#jdbc.repository.username=wisebiv6
+#jdbc.repository.password=wisebiv61012
+
+#jdbc.repository.driverClass=com.tmax.tibero.jdbc.TbDriver
+#jdbc.repository.url=jdbc:tibero:thin:@169.56.72.9:8629:tibero
+#jdbc.repository.username=wisebiv6
+#jdbc.repository.password=wise1012
+
+# tibero - chung nam da
+#jdbc.repository.driverClass=com.tmax.tibero.jdbc.TbDriver
+#jdbc.repository.url=jdbc:tibero:thin:@168.188.5.27:8629:cnudw
+#jdbc.repository.username=wisebiv6
+#jdbc.repository.password=wisebiv61012
+
+
+# maria
+#jdbc.repository.driverClass=org.mariadb.jdbc.Driver
+#jdbc.repository.url=jdbc:mysql://127.0.0.1:3306/WISEBIV6
+#jdbc.repository.username=root
+#jdbc.repository.password=rlagywls

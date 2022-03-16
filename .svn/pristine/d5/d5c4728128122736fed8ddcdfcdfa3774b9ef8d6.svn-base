@@ -1,0 +1,21 @@
+#
+# Copyright 2021-2022 WISEiTECH co., Ltd (http://www.wise.co.kr/)
+#
+dashboard:
+    clustering:
+        enabled: false
+        database:
+            type: h2                # 'h2', 'mariadb', 'mssql', 'mysql' or 'oracle'
+    defaultSite:
+        fileSystem:
+            managerClass: 
+            base: ${dashboard.basedir.uri}/WEB-INF/dashboard-fs
+            options:
+                
+    journal:
+        updater:
+            fixedRate: 30000
+    authentication:
+        loginPage: '/login.do?destination=dashboard/'
+        logoutPage: '/logout.do?destination=dashboard/'
+    
